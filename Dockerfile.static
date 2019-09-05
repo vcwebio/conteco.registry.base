@@ -1,0 +1,41 @@
+##### BEGIN image.base/Dockerfile/image-header #####
+FROM vcwebio/conteco.image.wrapper AS wrapper
+FROM vcwebio/conteco.external.registry:2 AS base
+##### END image.base/Dockerfile/image-header #####
+
+##### BEGIN image.base/Dockerfile/conteco #####
+COPY --from=wrapper /conteco/ /conteco/
+ENTRYPOINT ["/conteco/bin/image/wrapper/entrypoint"]
+##### END image.base/Dockerfile/conteco #####
+
+##### BEGIN image/Dockerfile/conteco #####
+COPY ./conteco/ /conteco/
+RUN chmod -R +x /conteco/bin && rm -rf /conteco/git-repository/*
+COPY ./ /conteco/git-repository/
+##### END image/Dockerfile/conteco #####
+
+##### BEGIN image/Dockerfile/build-instructions #####
+ENV INFOMETIS_CONTAINERENTRYPOINT "/entrypoint.sh"
+CMD ["--base", "/etc/docker/registry/config.yml"]
+##### END image/Dockerfile/build-instructions #####
+
+##### BEGIN image.base/Dockerfile/env-labels-footer #####
+ENV CONTECO_REALM="vcwebio" \
+    CONTECO_ECOSYSTEM="conteco" \
+    CONTECO_TYPE="registry" \
+    CONTECO_NAME="base" \
+    CONTECO_TAG="2" \
+    CONTECO_BASE="external.registry:2" \
+    CONTECO_BUILD="image-base"
+LABEL io.vcweb.schema-version="1.0" \
+      io.vcweb.realm="vcwebio" \
+      io.vcweb.ecosystem="conteco" \
+      io.vcweb.type="registry" \
+      io.vcweb.name="base" \
+      io.vcweb.tag="2" \
+      io.vcweb.base="external.registry:2" \
+      io.vcweb.build="image-base" \
+      io.vcweb.label="Conteco registry base" \
+      io.vcweb.description="The Docker registry base image." \
+      io.vcweb.docker.cmd.help="docker run vcwebio/conteco.registry.base --help" 
+##### END image.base/Dockerfile/env-labels-footer #####
