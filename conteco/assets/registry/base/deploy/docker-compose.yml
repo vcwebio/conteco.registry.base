@@ -11,12 +11,12 @@ services:
       - 5000:5000
     deploy:
       mode: replicated
-    networks:
-      - bridge
+#    networks:
+#      - bridge
 
-networks:
-  bridge:
-    external: true
+#networks:
+#  bridge:
+#    external: true
 
 #volumes:
 #  infometis:
