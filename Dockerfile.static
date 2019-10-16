@@ -15,8 +15,7 @@ COPY ./ /conteco/repo/
 ##### END image/Dockerfile/conteco #####
 
 ##### BEGIN image/Dockerfile/build-instructions #####
-ENV INFOMETIS_CONTAINERENTRYPOINT "/entrypoint.sh"
-CMD ["--base", "/etc/docker/registry/config.yml"]
+ENV CONTECO_ENTRYPOINT "/conteco/bin/registry/base/entrypoint"
 ##### END image/Dockerfile/build-instructions #####
 
 ##### BEGIN image.base/Dockerfile/env-labels-footer #####
