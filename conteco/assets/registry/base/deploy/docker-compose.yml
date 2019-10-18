@@ -2,21 +2,9 @@
 version: '3'
 services:
 
-  conteco:
-    image: vcwebio/conteco.registry.base:2
-#    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.registry:${CONTECO_TAG}
-#    volumes:
-#      - infometis:/var/lib/registry
+  service:
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.${CONTECO_TYPE}.${CONTECO_NAME}:${CONTECO_TAG}
     ports:
       - 5000:5000
     deploy:
       mode: replicated
-#    networks:
-#      - bridge
-
-#networks:
-#  bridge:
-#    external: true
-
-#volumes:
-#  infometis:
