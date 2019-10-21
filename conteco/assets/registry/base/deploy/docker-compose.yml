@@ -2,9 +2,17 @@
 version: '3'
 services:
 
-  service:
-    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.${CONTECO_TYPE}.${CONTECO_NAME}:${CONTECO_TAG}
-    ports:
-      - 5000:5000
-    deploy:
-      mode: replicated
+# START SERVICE registry.base
+  registry:
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.registry.base:2
+    environment: [${CONTECO_DC_REGISTRY_ENVIRONMENT}] 
+    command: [${CONTECO_DC_REGISTRY_COMMAND}]
+    volumes: [${CONTECO_DC_REGISTRY_VOLUMES}]
+    ports: [${CONTECO_DC_REGISTRY_PORTS}]
+    networks: [${CONTECO_DC_REGISTRY_NETWORKS}]
+    deploy: {${CONTECO_DC_REGISTRY_DEPLOY}}
+# END SERVICE registry.base
+
+networks:
+  ${CONTECO_DC_REGISTRY_NETWORKS}:
+    external: true
