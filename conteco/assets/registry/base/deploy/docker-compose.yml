@@ -5,14 +5,13 @@ services:
 # START SERVICE registry.base
   registry:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.registry.base:2
-    environment: [${CONTECO_DC_REGISTRY_ENVIRONMENT}] 
-    command: [${CONTECO_DC_REGISTRY_COMMAND}]
-    volumes: [${CONTECO_DC_REGISTRY_VOLUMES}]
+    environment: [] 
+    command: []
+    volumes: [${CONTECO_DC_REGISTRY_VOLUME_NAME}:/var/lib/registry]
     ports: [${CONTECO_DC_REGISTRY_PORTS}]
     networks: [${CONTECO_DC_REGISTRY_NETWORKS}]
     deploy: {${CONTECO_DC_REGISTRY_DEPLOY}}
 # END SERVICE registry.base
 
-networks:
-  ${CONTECO_DC_REGISTRY_NETWORKS}:
-    external: true
+volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
+networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
