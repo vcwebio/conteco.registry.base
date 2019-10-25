@@ -10,7 +10,16 @@ services:
     volumes: [${CONTECO_DC_REGISTRY_VOLUME_NAME}:/var/lib/registry]
     ports: [${CONTECO_DC_REGISTRY_PORTS}]
     networks: [${CONTECO_DC_REGISTRY_NETWORKS}]
-    deploy: {${CONTECO_DC_REGISTRY_DEPLOY}}
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources: 
+        limits: 
+          cpus: '${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: ${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_LIMITS_MEMORY}
+        reservations:
+          cpus: '${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: ${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}
 # END SERVICE registry.base
 
 volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
