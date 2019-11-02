@@ -5,21 +5,20 @@ services:
 # START SERVICE registry.base
   registry:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.registry.base:2
-    environment: [] 
-    command: []
-    volumes: [${CONTECO_DC_REGISTRY_VOLUME_NAME}:/var/lib/registry]
-    ports: [${CONTECO_DC_REGISTRY_PORTS}]
-    networks: [${CONTECO_DC_REGISTRY_NETWORKS}]
+    environment: [${CONTECO_DC_REGISTRY_BASE_ENVIRONMENT}] 
+    command: [${CONTECO_DC_REGISTRY_BASE_COMMAND}]
+    volumes: [${CONTECO_DC_REGISTRY_BASE_VOLUMES}]
+    ports: [${CONTECO_DC_REGISTRY_BASE_PORTS}]
+    networks: [${CONTECO_DC_REGISTRY_BASE_NETWORKS}]
     deploy:
-      mode: replicated
-      replicas: 1
+      mode: ${CONTECO_DC_REGISTRY_BASE_DEPLOY_MODE}
       resources: 
         limits: 
-          cpus: '${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_LIMITS_CPUS}'
-          memory: '${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_LIMITS_MEMORY}'
+          cpus: '${CONTECO_DC_REGISTRY_BASE_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: '${CONTECO_DC_REGISTRY_BASE_DEPLOY_RESOURCES_LIMITS_MEMORY}'
         reservations:
-          cpus: '${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
-          memory: '${CONTECO_DC_REGISTRY_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+          cpus: '${CONTECO_DC_REGISTRY_BASE_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: '${CONTECO_DC_REGISTRY_BASE_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
 # END SERVICE registry.base
 
 volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
