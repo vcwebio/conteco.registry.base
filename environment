@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-export CONTECO_LABEL="Conteco registry base"
-export CONTECO_DESCRIPTION="The Docker registry base image."
+export CONTECO_LABEL="registry.base - ContEco"
+export CONTECO_DESCRIPTION="Docker Registry Base, useding default configuration."
 
 export CONTECO_TYPE="registry"
 export CONTECO_NAME="base"

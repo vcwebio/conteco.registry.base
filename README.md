@@ -1,8 +1,8 @@
-# The Conteco registry base
+# The `registry.base` - ContEco
 
-The DOcker regsitry base image. 
+Docker Registry Base, useding default configuration.
 
-## Modifications
+## Configuration Changes
 
 None.
 

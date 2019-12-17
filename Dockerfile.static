@@ -34,7 +34,7 @@ LABEL io.vcweb.schema-version="1.0" \
       io.vcweb.tag="2" \
       io.vcweb.base="external.registry:2" \
       io.vcweb.build="image-base" \
-      io.vcweb.label="Conteco registry base" \
-      io.vcweb.description="The Docker registry base image." \
+      io.vcweb.label="registry.base - ContEco" \
+      io.vcweb.description="Docker Registry Base, useding default configuration." \
       io.vcweb.docker.cmd.help="docker run vcwebio/conteco.registry.base --help" 
 ##### END image.base/Dockerfile/env-labels-footer #####
