@@ -7,9 +7,9 @@ services:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.registry.base:2
     environment: []
     command: []
-    volumes: [${CONTECO_DC_REGISTRY_VOLUME_NAME}:/var/lib/registry]
+    volumes: [${CONTECO_DC_REGISTRY_VOLUMES}]
     ports: [${CONTECO_DC_REGISTRY_PORTS}]
-    networks: [${CONTECO_DC_REGISTRY_NETWORKS}]
+    networks: [${CONTECO_TYPE}_overlay]
     deploy:
       mode: replicated
       resources:
@@ -23,4 +23,4 @@ services:
 # END SERVICE registry.base
 
 volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
-networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
+networks: {${CONTECO_TYPE}_overlay: { external: true }}
