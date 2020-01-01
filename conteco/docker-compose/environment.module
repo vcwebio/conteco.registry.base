@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 # START CONFIGURATION
-export CONTECO_DC_GLOBAL_STACKS='registry.base'
-export CONTECO_DC_GLOBAL_STACKNAMES='registry'
-export CONTECO_DC_GLOBAL_VOLUME_LIST='registry_volume'
+export CONTECO_DC_GLOBAL_STACKS="registry.base"
+export CONTECO_DC_GLOBAL_STACKNAMES="registry"
+export CONTECO_DC_GLOBAL_BOOTSTACKS="registry"
+export CONTECO_DC_GLOBAL_RUNSTACKS=""
+export CONTECO_DC_GLOBAL_VOLUME_LIST="registry_volume"
 # END CONFIGURATION
 
 # START OTHER VARIABLES
