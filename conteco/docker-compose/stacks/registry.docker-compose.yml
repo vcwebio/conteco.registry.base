@@ -4,12 +4,12 @@ services:
 
 # START SERVICE registry.base
   registry:
-    image: ${CONTECO_REGISTRY}${CONTECO_REALM_RUNTIME}/conteco.registry.base:2
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.registry.base:2
     environment: []
     command: []
-    volumes: [${CONTECO_TYPE}_conteco_dc_registry_volume:/var/lib/registry]
+    volumes: [${CONTECO_STACKPREFIX}_registry_volume:/var/lib/registry]
     ports: [${CONTECO_DC_REGISTRY_PORTS}]
-    networks: [${CONTECO_TYPE}_overlay]
+    networks: [${CONTECO_NETWORKLOCAL}_overlay]
     deploy:
       mode: replicated
       resources:
@@ -22,5 +22,5 @@ services:
       labels: [${CONTECO_DC_REGISTRY_DEPLOY_LABELS}]
 # END SERVICE registry.base
 
-volumes: {${CONTECO_TYPE}_conteco_dc_registry_volume: { external: true }}
-networks: {${CONTECO_TYPE}_overlay: { external: true }}
+volumes: {${CONTECO_STACKPREFIX}_registry_volume: { external: true }}
+networks: {${CONTECO_NETWORKLOCAL}_overlay: { external: true }}
